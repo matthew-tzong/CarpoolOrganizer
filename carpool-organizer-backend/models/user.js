@@ -1,7 +1,14 @@
+//Import Datatypes and import sequelize instance
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/dbConfig');
+const sequelize = require('../config/database');
 
+//Define User model from DB
 const User = sequelize.define('User', {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -11,6 +18,10 @@ const User = sequelize.define('User', {
     allowNull: false,
   },
   availability: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  number: {
     type: DataTypes.STRING,
     allowNull: false,
   },

@@ -1,5 +1,6 @@
 const Analytics = require('../models/Analytics');
 
+//Fetch all analytics information from DB
 exports.getAnalytics = async (req, res) => {
   try {
     const analytics = await Analytics.findAll();
@@ -9,6 +10,7 @@ exports.getAnalytics = async (req, res) => {
   }
 };
 
+//Add a new carpool analytics record to DB
 exports.createAnalytics = async (req, res) => {
   try {
     const { average_commute_time, total_cost_savings, total_carbon_reduction } = req.body;

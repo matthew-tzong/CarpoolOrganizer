@@ -1,30 +1,29 @@
+//Import Modules
 const express = require('express');
-const sequelize = require('./config/dbConfig');
+const sequelize = require('./config/database');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
 
-// Routes
+//Import Routes
 const companyRoutes = require('./routes/companyRoutes');
 const userRoutes = require('./routes/userRoutes');
 const carpoolRoutes = require('./routes/carpoolRoutes');
 const analyticsRoutes = require('./routes/analyticsRoutes');
 
-// Initialize express app
+//Initialize Express App, CORS, and JSON parsing
 const app = express();
-
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Use Routes
+//Use Routes within App
 app.use('/api/companies', companyRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/carpools', carpoolRoutes);
 app.use('/api/analytics', analyticsRoutes);
 
+//Start server & connect to DB
 const PORT = 5000
-
 app.listen(PORT, async () => {
   try {
     await sequelize.authenticate();

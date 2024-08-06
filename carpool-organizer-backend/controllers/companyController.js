@@ -1,5 +1,6 @@
 const Company = require('../models/Company');
 
+//Fetch all company information from DB
 exports.getCompanies = async (req, res) => {
   try {
     const companies = await Company.findAll();
@@ -9,6 +10,7 @@ exports.getCompanies = async (req, res) => {
   }
 };
 
+//Add a new company to app
 exports.createCompany = async (req, res) => {
   try {
     const { name, company_code } = req.body;
