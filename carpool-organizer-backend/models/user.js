@@ -11,27 +11,31 @@ const User = sequelize.define('User', {
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false,
   },
   location: {
     type: DataTypes.STRING,
-    allowNull: false,
   },
   availability: {
     type: DataTypes.STRING,
-    allowNull: false,
   },
   number: {
+    type: DataTypes.STRING,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true, 
+  },
+  password: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   companyId: {
     type: DataTypes.INTEGER,
-    references: {
-      model: 'Companies',
-      key: 'id',
-    },
-  },
-});
+  } }, {
+    tableName: 'User',
+    timestamps: false
+ }
+);
 
 module.exports = User;

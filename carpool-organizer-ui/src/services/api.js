@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// Base URL for the API, can be overridden by environment variables
+// Base URL for the API
 const API_URL = 'http://localhost:5000/api';
 
 // Create an Axios instance
@@ -29,7 +29,10 @@ const handleApiRequest = async (method, url, data = null) => {
 };
 
 // Export methods for API interaction
-export const get = (url) => handleApiRequest('get', url);
-export const post = (url, data) => handleApiRequest('post', url, data);
-export const put = (url, data) => handleApiRequest('put', url, data);
-export const del = (url) => handleApiRequest('delete', url);
+export const validateCompany = (data) => handleApiRequest('post', '/companies/validate', data);
+export const createCompany = (data) => handleApiRequest('post', '/companies', data);
+export const validateUser = (data) => handleApiRequest('post', '/users/validate', data);
+export const createUser = (data) => handleApiRequest('post', '/users', data);
+
+
+export default api;
